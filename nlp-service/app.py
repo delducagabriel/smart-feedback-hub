@@ -20,7 +20,7 @@ def analyze_sentiment():
     # realiza a análise de sentimento usando TextBlob
     # para este MVP, o TextBlob puro funciona melhor com textos em ingls, para uma versão pt-br, trocaríamos a biblioteca aqui dentro sem afetar o resto do sistema
     blob = TextBlob(text)
-    sentiment = blob.sentiment.polarity  # obtém a polaridade do sentimento (-1 a 1)
+    polarity = blob.sentiment.polarity  # obtém a polaridade do sentimento (-1 a 1)
 
     if polarity > 0.1:
         sentiment_label = 'positivo'
