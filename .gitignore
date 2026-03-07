@@ -1,0 +1,14 @@
+# Ignorar dependências do Python
+venv/
+__pycache__/
+
+# Ignorar arquivos compilados do Java
+target/
+.mvn/
+
+# Ignorar dependências do Node/React
+node_modules/
+dist/
+
+# Ignorar arquivos de sistema operacional
+.DS_Store
