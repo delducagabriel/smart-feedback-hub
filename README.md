@@ -10,7 +10,9 @@ O projeto foi dividido em três frentes principais para garantir separação de 
 
 ---
 ## como executar 
-Para que o sistema funcione de ponta a ponta, os três serviços precisam estar rodando simultaneamente em terminais separados. Pré-requisitos:
+Para que o sistema funcione de ponta a ponta, os três serviços precisam estar rodando simultaneamente em terminais separados. 
+
+### pré-requisitos:
 * Python 3.x
 * Java 17+ (e Maven)
 * Node.js e npm
