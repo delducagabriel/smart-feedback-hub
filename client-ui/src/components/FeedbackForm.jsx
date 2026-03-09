@@ -5,14 +5,17 @@ function FeedbackForm({ onAddFeedback }) {
     const [text, setText] = useState(''); // estado local apenas para controlar o valor do input
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // evita que a página seja recarregada ao enviar o formulário
+        if (e && e.preventDefault) e.preventDefault(); // previne o comportamento padrão do form
+        if (!text.trim()) return; // não envia se o texto estiver vazio ou só com espaços
+        onAddFeedback(text); // chama a função do pai para adicionar o feedback
+        setText(''); // limpa o input após enviar
+    }
 
-        if (!text.trim()) return; // evita enviar feedbacks vazios ou apenas com espaços
-
-        console.log("Formulário interceptado, texto:", text);
-
-        onAddFeedback(text); // chama a função que vai enviar para a API
-        setText(''); // limpa o campo de texto após enviar
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) { // permite enviar com Enter, mas não com Shift+Enter
+            e.preventDefault();
+            handleSubmit(e);
+        }
     }
 
     return (
@@ -22,6 +25,7 @@ function FeedbackForm({ onAddFeedback }) {
                 name="feedbackInput"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="Escreva seu feedback aqui..."
                 rows="4"
                 required
